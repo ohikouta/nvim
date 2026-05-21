@@ -40,7 +40,8 @@ return {
         vim.api.nvim_set_hl(0, "SnacksDashboardHeader", { fg = "#FF8C00", bold = true })
       end
       set_hl()
-      vim.api.nvim_create_autocmd("ColorScheme", { callback = set_hl })
+      local group = vim.api.nvim_create_augroup("DashboardHeaderHL", { clear = true })
+      vim.api.nvim_create_autocmd("ColorScheme", { group = group, callback = set_hl })
     end,
   },
 }
