@@ -30,3 +30,15 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   group = transparent,
   callback = set_transparent,
 })
+
+local markdown_indent = vim.api.nvim_create_augroup("MarkdownIndent", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+  group = markdown_indent,
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.expandtab = false
+    vim.opt_local.tabstop = 4
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.softtabstop = 4
+  end,
+})
